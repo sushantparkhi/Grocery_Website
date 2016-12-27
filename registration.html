@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+
+    <title>Registration - Grocery Store</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <style type="text/css">
+        /*Basic Layout*/
+        
+        body {
+            background-color: lightgray;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .container {
+            width: 1000px;
+            margin: 10px auto 5px auto;
+            height: 1180px;
+            background-color: #fff;
+        }
+        
+        .part_2 {
+            width: 20%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_3 {
+            width: 30%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_4 {
+            width: 40%;
+            overflow: hidden;
+            float: left;
+            background-color: green;
+        }
+        
+        .part_6 {
+            width: 60%;
+            overflow: hidden;
+            float: left;
+            background-color: purple;
+        }
+        
+        .part_7 {
+            width: 70%;
+            overflow: hidden;
+            float: left;
+            background-color: green;
+        }
+        
+        .part_8 {
+            width: 80%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_25 {
+            width: 25%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .row {
+            margin: 0;
+            padding: 10px;
+            padding-top: 30px;
+        }
+        
+        .header {
+            margin: 0;
+        }
+        /*Navigation*/
+        
+        .nav ul {
+            list-style: none;
+            background-color: #444;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            font-size: 1.2em;
+            line-height: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            transition: .3s background-color;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .nav a:hover {
+            background-color: maroon;
+        }
+        
+        .nav a.active {
+            background-color: lightgray;
+            color: #444;
+            cursor: default;
+        }
+        
+        .nav li {
+            float: left;
+        }
+        
+        .nav ul {
+            overflow: auto;
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            background-color: #444;
+            margin-top: 25px;
+        }
+        /*Slider*/
+        
+        #slider {
+            position: relative;
+            overflow: hidden;
+            margin: 5px auto 0 auto;
+            border-radius: 4px;
+        }
+        
+        #slider ul {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 200px;
+            list-style: none;
+        }
+        
+        #slider ul li {
+            position: relative;
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 300px;
+            background: #ccc;
+            text-align: center;
+            line-height: 300px;
+        }
+        
+        a.control_prev,
+        a.control_next {
+            position: absolute;
+            top: 40%;
+            z-index: 999;
+            display: block;
+            padding: 4% 3%;
+            width: auto;
+            height: auto;
+            background: #2a2a2a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        
+        a.control_prev:hover,
+        a.control_next:hover {
+            opacity: 1;
+            -webkit-transition: all 0.2s ease;
+        }
+        
+        a.control_prev {
+            border-radius: 0 2px 2px 0;
+        }
+        
+        a.control_next {
+            right: 0;
+            border-radius: 2px 0 0 2px;
+        }
+        
+        .slider_option {
+            position: relative;
+            margin: 10px auto;
+            width: 160px;
+            font-size: 18px;
+        }
+        /*General Styling*/
+        
+        .prod_thumb {
+            margin: auto;
+            padding-left: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 5px;
+            border: 4px inset gray;
+            text-align: center;
+        }
+        
+        .prod_thumb span {
+            font-size: 14px;
+        }
+        
+        .button {
+            font: bold 12px;
+            text-decoration: none;
+            background-color: maroon;
+            color: #fff;
+            padding: 10px 6px 10px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+        
+        .button:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4E0000;
+        }
+        
+        .login_form td {
+            padding-top: 20px;
+            padding-left: 10px;
+        }
+        
+        .login_form input[type=text],
+        .login_form input[type=password],
+        .login_form textarea,
+        .login_form select {
+            border: 2px solid rosybrown;
+            height: 31px;
+            width: 223px;
+            box-shadow: 0px 0px 27px rgb(204, 204, 204) inset;
+            transition: 500ms all ease;
+            padding: 3px 3px 3px 3px;
+        }
+        
+        .login_form input[type=text]:hover,
+        .login_form input[type=password]:hover,
+        .login_form input[type=text]:focus,
+        .login_form input[type=password]:focus,
+        .login_form textarea:hover,
+        .login_form textarea:focus,
+        .login_form select:hover,
+        .login_form select:focus,
+        {
+            width: 260px;
+            transition: 500ms all ease;
+            background: url(msg.png) no-repeat right;
+            background-size: 25px 25px;
+            background-position: 96% 62%;
+            padding: 3px 32px 3px 3px;
+        }
+        .login_form label{
+            color:red;
+            font-size:10px;
+            white-space:pre;
+        }
+        .login_form label:before{
+            content: '\A';
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //form validation rules
+            $("#regis_f").validate({
+                rules: {
+                    fname:{
+                        required:true
+                    },
+                    lname:{
+                        required:true
+                    },
+                    cont:{
+                        required:true,
+                        maxlength:10
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    addr:
+                    {
+                      required:true  
+                    },
+                    state:
+                    {
+                        required:true
+                    },
+                    city:
+                    {
+                        required:true
+                    },
+                    zip:
+                    {
+                        required:true,
+                        maxlength:5
+                    },
+                    pwd: {
+                        required: true,
+                        minlength: 5
+                    },
+                    cpwd: {
+                        minlength: 5,
+                        equalTo:'#password'
+                    }
+                },
+                messages: {
+                    fname:{
+                        required:"Please provide a First Name"
+                    },
+                    lname:{
+                      required:"Please Enter a Last Name"  
+                    },
+                    pwd: {
+                        required: "Please Enter a Password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    cpwd:{
+                        equalTo:"Confirm Password Does not Match"
+                    },
+                    email: "Please Enter a Valid Email Address",
+                    zip:"Please Enter valid Zip",
+                    city:"Pleae Enter City",
+                    state:"Please Select State",
+                    add:"Please Enter Address",
+                    cont:{
+                        required:"Please Enter Contact Number",
+                        maxlength:"Please Enter Valid Contact Number"
+                    }
+                    
+                },
+                submitHandler: function(form) {
+                    //form.submit();
+                    alert("Registeration Successfull");
+                }
+            });
+     });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" style="height:100px">
+            <div class="part_2">
+                <img src="images/logo_small.jpg">
+            </div>
+            <div class="part_8" style="margin:auto;text-align:center;padding-top:20px;">
+                <h1>Welcome to Online Grocery Store</h1>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="home"><a href="index.html">Home</a></li>
+                <li class="product"><a href="products.html">Products</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+                <li class="signup"><a class="active" href="registration.html">Sign Up</a></li>
+                <li class="contact"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <h2 style="text-align:center">Registration Form...</h2><br>
+            <form id="regis_f">
+                <table class="login_form" style="margin:auto">
+                    <tr>
+                        <td>First Name</td>
+                        <td><input type="text" name="fname" placeholder="Enter First Name"><br>
+                            <label for="fname"></label>
+                        </td>
+                        <td>Last Name</td>
+                        <td><input type="text" name="lname" placeholder="Enter Last Name"></td><br>
+                        <label for="lname"></label>
+
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td><input type="text" name="cont" placeholder="Enter Contact Number">
+                            <br>
+                            <label for="cont"></label>
+
+                        </td>
+                        <td>Email Address</td>
+                        <td><input type="text" name="email" placeholder="Enter Email Address">
+                            <br>
+                            <label for="email"></label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td colspan="3"><textarea name="add" style="width:662px;height:50px;" placeholder="Enter Address"></textarea>
+                            <br>
+                            <label for="add"></label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>
+                            <select name="state">
+                                <option>None</option>
+                                <option>Alabama </option>
+<option>Alaska </option>
+<option>Arizona </option>
+<option>Arkansas </option>
+<option>California </option>
+<option>Colorado </option>
+<option>Connecticut </option>
+<option>Delaware </option>
+<option>Florida </option>
+<option>Georgia </option>
+<option>Hawaii </option>
+<option>Idaho </option>
+<option>Illinois Indiana </option>
+<option>Iowa </option>
+<option>Kansas </option>
+<option>Kentucky </option>
+<option>Louisiana </option>
+<option>Maine </option>
+<option>Maryland </option>
+<option>Massachusetts</option> 
+<option>Michigan </option>
+<option>Minnesota </option>
+<option>Mississippi </option>
+<option>Missouri </option>
+<option>Montana Nebraska </option>
+<option>Nevada </option>
+<option>New Hampshire </option>
+<option>New Jersey </option>
+<option>New Mexico </option>
+<option>New York </option>
+<option>North Carolina </option>
+<option>North Dakota </option>
+<option>Ohio </option>
+<option>Oklahoma </option>
+<option>Oregon </option>
+<option>Pennsylvania Rhode Island </option>
+<option>South Carolina </option>
+<option>South Dakota </option>
+<option>Tennessee </option>
+<option>Texas </option>
+<option>Utah </option>
+<option>Vermont </option>
+<option>Virginia </option>
+<option>Washington </option>
+<option>West Virginia </option>
+<option>Wisconsin</option> 
+<option>Wyoming</option>
+
+                            </select>
+                            <br>
+                            <label for="state"></label>
+
+                        </td>
+                        <td>City</td>
+                        <td><input type="text" name="city" placeholder="Enter City">
+                            <br>
+                            <label for="city"></label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Zip</td>
+                        <td>
+                            <input type="text" name="zip" placeholder="12345">
+                            <br>
+                            <label for="zip"></label>
+
+                        </td>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" name="pwd" id="password" placeholder="..........">
+                                <br>
+                                <label for="pwd"></label>
+                            </td>
+                            <td>Confirm Password</td>
+                            <td><input type="password" name="cpwd" placeholder="..........">
+                                <br>
+                                <label for="cpwd"></label>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="margin:auto;padding-left:390px;"><input style="font-size:0.9em" class="button" type="submit"></td>
+                        </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+</body>
+
+</html>

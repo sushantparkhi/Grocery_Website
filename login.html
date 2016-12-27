@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+
+    <title>Login - Grocery Store</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <style type="text/css">
+        /*Basic Layout*/
+        
+        body {
+            background-color: lightgray;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .container {
+            width: 1000px;
+            margin: 10px auto 5px auto;
+            height: 580px;
+            background-color: #fff;
+        }
+        
+        .part_2 {
+            width: 20%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_3 {
+            width: 30%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_4 {
+            width: 40%;
+            overflow: hidden;
+            float: left;
+            background-color: green;
+        }
+        
+        .part_6 {
+            width: 60%;
+            overflow: hidden;
+            float: left;
+            background-color: purple;
+        }
+        
+        .part_7 {
+            width: 70%;
+            overflow: hidden;
+            float: left;
+            background-color: green;
+        }
+        
+        .part_8 {
+            width: 80%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_25 {
+            width: 25%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .row {
+            margin: 0;
+            padding: 10px;
+            padding-top: 30px;
+        }
+        
+        .header {
+            margin: 0;
+        }
+        /*Navigation*/
+        
+        .nav ul {
+            list-style: none;
+            background-color: #444;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            font-size: 1.2em;
+            line-height: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            transition: .3s background-color;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .nav a:hover {
+            background-color: maroon;
+        }
+        
+        .nav a.active {
+            background-color: lightgray;
+            color: #444;
+            cursor: default;
+        }
+        
+        .nav li {
+            float: left;
+        }
+        
+        .nav ul {
+            overflow: auto;
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            background-color: #444;
+            margin-top: 25px;
+        }
+        /*Slider*/
+        
+        #slider {
+            position: relative;
+            overflow: hidden;
+            margin: 5px auto 0 auto;
+            border-radius: 4px;
+        }
+        
+        #slider ul {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 200px;
+            list-style: none;
+        }
+        
+        #slider ul li {
+            position: relative;
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 300px;
+            background: #ccc;
+            text-align: center;
+            line-height: 300px;
+        }
+        
+        a.control_prev,
+        a.control_next {
+            position: absolute;
+            top: 40%;
+            z-index: 999;
+            display: block;
+            padding: 4% 3%;
+            width: auto;
+            height: auto;
+            background: #2a2a2a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        
+        a.control_prev:hover,
+        a.control_next:hover {
+            opacity: 1;
+            -webkit-transition: all 0.2s ease;
+        }
+        
+        a.control_prev {
+            border-radius: 0 2px 2px 0;
+        }
+        
+        a.control_next {
+            right: 0;
+            border-radius: 2px 0 0 2px;
+        }
+        
+        .slider_option {
+            position: relative;
+            margin: 10px auto;
+            width: 160px;
+            font-size: 18px;
+        }
+        /*General Styling*/
+        
+        .prod_thumb {
+            margin: auto;
+            padding-left: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 5px;
+            border: 4px inset gray;
+            text-align: center;
+        }
+        
+        .prod_thumb span {
+            font-size: 14px;
+        }
+        
+        .button {
+            font: bold 12px;
+            text-decoration: none;
+            background-color: maroon;
+            color: #fff;
+            padding: 10px 6px 10px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+        
+        .button:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4E0000;
+        }
+        
+        .login_form td {
+            padding-top: 20px;
+            padding-left: 10px;
+        }
+        
+        .login_form input[type=text],
+        .login_form input[type=password] {
+            border: 2px solid rosybrown;
+            height: 31px;
+            width: 223px;
+            box-shadow: 0px 0px 27px rgb(204, 204, 204) inset;
+            transition: 500ms all ease;
+            padding: 3px 3px 3px 3px;
+        }
+        
+        .login_form input[type=text]:hover,
+        .login_form input[type=password]:hover,
+        .login_form input[type=text]:focus.login_form input[type=password]:focus {
+            width: 260px;
+            transition: 500ms all ease;
+            background-size: 25px 25px;
+            background-position: 96% 62%;
+            padding: 3px 32px 3px 3px;
+        }
+         .login_form label{
+            color:red;
+            font-size:10px;
+            white-space:pre;
+        }
+        .login_form label:before{
+            content: '\A';
+        }
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+       $(document).ready(function(){
+            //form validation rules
+            $("#login_f").validate({
+                rules: {
+                    emailadd: {
+                        required: true,
+                        email: true
+                    },
+                    passw: {
+                        required: true,
+                        minlength: 5
+                    }
+                },
+                messages: {
+                    
+                    passw: {
+                        required: "Please Enter a Password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    emailadd: "Please enter a valid email address",
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        }
+       );
+    
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" style="height:100px">
+            <div class="part_2">
+                <img src="images/logo_small.jpg">
+            </div>
+            <div class="part_8" style="margin:auto;text-align:center;padding-top:20px;">
+                <h1>Welcome to Online Grocery Store</h1>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="home"><a href="index.html">Home</a></li>
+                <li class="product"><a href="products.html">Products</a></li>
+                <li class="login"><a class="active" href="login.html">Login</a></li>
+                <li class="signup"><a href="registration.html">Sign Up</a></li>
+                <li class="contact"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <h2 style="text-align:center">Please Login to Continue...</h2><br>
+            <form novalidate="novalidate" method="post" id="login_f" action="index.html">
+                <table class="login_form" style="margin:auto">
+                    <tr>
+                        <td>Email Address</td>
+                        <td><input type="text" name="emailadd" placeholder="Enter Email Address"><br>
+                            <label for="emailadd"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="passw" placeholder=".........."></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="margin:auto;padding-left:150px;"><input style="font-size:0.9em" class="button" type="submit"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br>
+        <hr style="border:1px solid gray">
+        <span style="font-size:0.7em;margin-left:10px;">Copyright <i class="fa fa-copyright"></i> Sushant Deepak Parkhi | 2016-2017</span>
+    </div>
+</body>
+
+</html>

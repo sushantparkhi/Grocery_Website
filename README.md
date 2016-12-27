@@ -1,2 +1,3 @@
-# Grocery_Website
-Simple HTML Grocery Website
+# Grocery Website
+
+Simple HTML Grocery Website using HTML5, Bootstrap, JQuery, and JQuery UI

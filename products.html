@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+
+    <title>Order Confirmation - Grocery Store</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script>
+        $(function() {
+    $( "#tabs" ).tabs();
+  });
+    </script>
+    <style type="text/css">
+        /*Basic Layout*/
+        
+        body {
+            background-color: lightgray;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .container {
+            width: 1000px;
+            margin: 10px auto 5px auto;
+            height: 770px;
+            background-color: #fff;
+        }
+        
+        .part_2 {
+            width: 20%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_3 {
+            width: 30%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_4 {
+            width: 40%;
+            overflow: hidden;
+            float: left;
+            background-color: green;
+        }
+        
+        .part_6 {
+            width: 60%;
+            overflow: hidden;
+            float: left;
+            background-color: purple;
+        }
+        
+        .part_7 {
+            width: 70%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_8 {
+            width: 80%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .part_25 {
+            width: 25%;
+            overflow: hidden;
+            float: left;
+        }
+        
+        .row {
+            margin: 0;
+            padding: 10px;
+            padding-top: 30px;
+        }
+        
+        .header {
+            margin: 0;
+        }
+        /*Navigation*/
+        
+        .nav ul {
+            list-style: none;
+            background-color: #444;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            font-size: 1.2em;
+            line-height: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            transition: .3s background-color;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .nav a:hover {
+            background-color: maroon;
+        }
+        
+        .nav a.active {
+            background-color: lightgray;
+            color: #444;
+            cursor: default;
+        }
+        
+        .nav li {
+            float: left;
+        }
+        
+        .nav ul {
+            overflow: auto;
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            background-color: #444;
+            margin-top: 25px;
+        }
+        /*Slider*/
+        
+        #slider {
+            position: relative;
+            overflow: hidden;
+            margin: 5px auto 0 auto;
+            border-radius: 4px;
+        }
+        
+        #slider ul {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 200px;
+            list-style: none;
+        }
+        
+        #slider ul li {
+            position: relative;
+            display: block;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 300px;
+            background: #ccc;
+            text-align: center;
+            line-height: 300px;
+        }
+        
+        a.control_prev,
+        a.control_next {
+            position: absolute;
+            top: 40%;
+            z-index: 999;
+            display: block;
+            padding: 4% 3%;
+            width: auto;
+            height: auto;
+            background: #2a2a2a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        
+        a.control_prev:hover,
+        a.control_next:hover {
+            opacity: 1;
+            -webkit-transition: all 0.2s ease;
+        }
+        
+        a.control_prev {
+            border-radius: 0 2px 2px 0;
+        }
+        
+        a.control_next {
+            right: 0;
+            border-radius: 2px 0 0 2px;
+        }
+        
+        .slider_option {
+            position: relative;
+            margin: 10px auto;
+            width: 160px;
+            font-size: 18px;
+        }
+        /*General Styling*/
+        
+        .prod_thumb {
+            margin: auto;
+            padding-left: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 5px;
+            border: 4px inset gray;
+            text-align: center;
+        }
+        
+        .prod_thumb span {
+            font-size: 14px;
+        }
+        
+        .button {
+            font: bold 12px;
+            text-decoration: none;
+            background-color: maroon;
+            color: #fff;
+            padding: 10px 6px 10px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+        
+        .button:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4E0000;
+        }
+        
+        .ui-widget-content {
+            border: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header" style="height:100px">
+            <div class="part_2">
+                <img src="images/logo_small.jpg">
+            </div>
+            <div class="part_8" style="margin:auto;text-align:center;padding-top:20px;">
+                <h1>Welcome to Online Grocery Store</h1>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="home"><a href="index.html">Home</a></li>
+                <li class="product"><a class="active" href="products.html">Products</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+                <li class="signup"><a href="registration.html">Sign Up</a></li>
+                <li class="contact"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Category 1</a></li>
+                    <li><a href="#tabs-2">Category 2</a></li>
+                    <li><a href="#tabs-3">Category 3</a></li>
+                </ul>
+                <div style="border:0" id="tabs-1">
+                    <div class="row">
+                        <div class="part_25">
+                            <div class="prod_thumb">
+                                <img src="images/hood_milk.jpg"><br><br>
+                                <span>Hood Milk</span><br> $3.5
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/juice.png" height="200"><br><br>
+                                <span>Tropicana Orange Juice</span><br> $4.5
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/oreo.jpg" height="200"><br><br>
+                                <span>Oero</span><br> $6
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/lays.png"><br><br>
+                                <span>Lays Classic</span><br> $4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-2">
+                    <div class="row">
+                        <div class="part_25">
+                            <div class="prod_thumb">
+                                <img src="images/hood_milk.jpg"><br><br>
+                                <span>Hood Milk</span><br> $3.5
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/oreo.jpg" height="200"><br><br>
+                                <span>Oero</span><br> $6
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/juice.png" height="200"><br><br>
+                                <span>Tropicana Orange Juice</span><br> $4.5
+                            </div>
+                        </div>
+                        
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/lays.png"><br><br>
+                                <span>Lays Classic</span><br> $4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-3">
+                    
+                    <div class="row">
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/lays.png"><br><br>
+                                <span>Lays Classic</span><br> $4
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb">
+                                <img src="images/hood_milk.jpg"><br><br>
+                                <span>Hood Milk</span><br> $3.5
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/juice.png" height="200"><br><br>
+                                <span>Tropicana Orange Juice</span><br> $4.5
+                            </div>
+                        </div>
+                        <div class="part_25">
+                            <div class="prod_thumb" style="border-left:0">
+                                <img src="images/oreo.jpg" height="200"><br><br>
+                                <span>Oero</span><br> $6
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
